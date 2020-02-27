@@ -1,0 +1,157 @@
+
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Amicable Numbers</title>
+
+      <style type="text/css">
+      body {
+        font-family: montserrat, sans-serif;
+      }
+      #number1 {
+        width: 10%;
+        padding: 5px;
+      }
+      #number2 {
+        width: 10%;
+        padding: 5px;
+      }
+      button {
+        padding: 5px;
+      }
+      form {
+        margin: 0;
+      }
+
+      </style>
+
+      <script language="javascript">
+        function calculator() {
+
+
+          number1 = document.amicableTest.number1.value;
+          number2 = document.amicableTest.number2.value;
+          number1 = parseInt(number1);
+          number2 = parseInt(number2);
+
+          factors1 = addFactors(getFactors(number1));
+          factors2 = addFactors(getFactors(number2));
+
+          if (number1 == factors2 && number2 == factors1) {
+            document.getElementById("results").innerHTML = "Amicable!";
+          } else {
+            document.getElementById("results").innerHTML = "Not amicable!";
+          }
+        }
+        //
+        // document.getElementById("num1").innerHTML += "First number: "
+        // + number1 + "&nbsp;";
+        // document.getElementById("num2").innerHTML += "Second number: "
+        // + number2 + "&nbsp;";
+
+        function isFactor(num, testNum) {
+          if (num % testNum == 0) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+        function showFactors(array) {
+          for (i = 0; i < array.length; i++) {
+            document.write(array[i], " ");
+          }
+          // document.write("<br>");
+        }
+
+        function addFactors(array) {
+          var tot = 0;
+          for (i = 0; i < array.length; i++) {
+            tot += array[i];
+          }
+          return tot;
+        }
+        // get the Factors
+        function getFactors(num) {
+          tot = [];
+          for (i = 1; i < num; i++) {
+            if(isFactor(num, i)) {
+              tot.push(i);
+              // if((num/i) != i) {
+              //   tot.push(num/i);
+              // }
+            }
+          }
+          // sorts them
+          // tot.sort(
+          //   function(a, b){
+          //   return a - b;
+          //   }
+          // );
+
+          return tot;
+        }
+
+        </script>
+      </head>
+
+
+      <body>
+        <center>
+          <h1> Amicable Number Calculator </h1>
+          <script language="javascript">
+
+          // ifFactor
+          // if(isFactor(100, 50)) {
+          //   document.write("1!") // 1 means it's working
+          // } else {
+          //   document.write("2!") // 2 means it's not working
+          // }
+          //
+          // if(isFactor(99, 50)) {
+          //   document.write("3!") // 3 means it's not working
+          // } else {
+          //   document.write("4!") // 4 means it's working
+          // }
+          //
+          //showFactors
+          // array = [1, 2, 4, 6, 10, 20, 25, 50, 100, 125, 250, 500];
+          // showFactors(array);
+
+          //addFactors
+          // array = [1, 2, 4, 6, 10, 20, 25, 50, 100, 125, 250, 500];
+          // document.write(addFactors(array), "<br> <br>");
+
+          //getFactors
+          // showFactors(getFactors(162));
+          // showFactors(getFactors(50));
+
+          </script>
+
+          <form name= "amicableTest">
+            Enter a number:
+            <script language="javascript">
+            document.write ('<input type="text" id="number1" value=>');
+            </script>
+            Enter a number:
+
+            <script language="javascript">
+            document.write ('<input type="text" id="number2" value=>');
+            </script>
+            <br>
+            <br>
+            <input type="button" value= "Submit" onclick="calculator()">
+
+            <br>
+            <br>
+
+            <!-- <div id="num1"> Amicable? </div>
+            <div id="num2"> </div>
+-->
+            <div id="results"> </div>
+
+          </form>
+
+      </center>
+    </body>
+  </html>
